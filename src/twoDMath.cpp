@@ -1,12 +1,36 @@
 #include <twoDMath.h>
+#include <debug.h>
+
 
 const double	piOTwo		= M_PI/2.0;
 const double	twoPi			= 2 * M_PI;
 const double	threePiOtwo	= 3 * piOTwo;
 
-double	degToRad(double deg) { return deg * M_PI / 180.0; }
+double	degToRad(double deg) {
+	
+	double	rad;
+	
+	if (deg==0) {
+		rad = 0;
+	} else {
+		rad = deg * M_PI / 180.0;
+	}
+	return rad;
+}
 
-double	radToDeg(double rad) { return rad * 180 / M_PI; }
+
+double	radToDeg(double rad) {
+
+	double	deg;
+	
+	if (rad==0) {
+		deg = 0;
+	} else {
+		deg = rad * 180 / M_PI;
+	}
+	return deg;
+}
+
 
 double	getAngle(twoDPt* endPt,twoDPt* startPt) {
 
@@ -50,6 +74,9 @@ void twoDPt::setPtPolar(double inMag,double inRad) {
 
 	isPolar = true;
 	magX = inMag;
+	while(inRad>twoPi) {
+		inRad = inRad - twoPi;
+	}
 	radY = inRad;
 }
 
@@ -191,12 +218,12 @@ void twoDPt::toPolar(void) {
 		switch(getQuad()) {
 			case origin		: break; 	
 			case xAxis		:
-				magX = abs(magX);
 				if (magX>0) {
 					radY = 0;
 				} else {
 					radY = M_PI;
 				}
+				magX = abs(magX);
 			break;
 			case yAxis		:
 				magX = abs(radY);
@@ -223,7 +250,7 @@ void twoDPt::toPolar(void) {
 				magX = mag;
 			break;
 		}
- 		isPolar = true;	
+ 		isPolar = true;
  	}
  }
 				
