@@ -48,7 +48,6 @@ class twoDPt {
 				
 				void		addPt(twoDPt* inPt);
 				void		subPt(twoDPt* inPt);
-				//double	angle(twoDPt* endPt,twoDPt* startPt=NULL);
 				
 	protected:
 				bool		isPolar;		// Are these variables holding rectangular or polar values?
