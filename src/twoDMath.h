@@ -14,6 +14,8 @@ extern	double	degToRad(double deg);
 extern	double	radToDeg(double rad);
 extern	double	angle(twoDPt* endPt,twoDPt* startPt=NULL);
 
+
+
 enum quadrant {
 
 	origin,
@@ -25,6 +27,7 @@ enum quadrant {
 	quad4,
 	quadError
 };
+
 
 
 class twoDPt {
